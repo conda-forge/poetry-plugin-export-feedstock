@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poetry-plugin-e
 
 Summary: Poetry plugin to export the dependencies to various formats
 
+Development: https://github.com/python-poetry/poetry-plugin-export
+
 Current build status
 ====================
 
