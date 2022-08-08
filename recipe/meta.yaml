@@ -18,10 +18,11 @@ requirements:
   host:
     - pip
     - python >=3.7,<4.0
-    - poetry >=1.2.0b1dev0,<2.0.0
+    - poetry-core
   run:
-    - poetry >=1.2.0b1dev0,<2.0.0
     - python >=3.7,<4.0
+    - poetry >=1.2.0b3,<2.0.0
+    - poetry-core >=1.1.0b3,<2.0.0
 
 test:
   imports:
