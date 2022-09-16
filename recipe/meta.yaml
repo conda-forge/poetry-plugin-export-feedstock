@@ -1,5 +1,5 @@
 {% set name = "poetry-plugin-export" %}
-{% set version = "1.0.6" %}
+{% set version = "1.0.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/poetry-plugin-export-{{ version }}.tar.gz
-  sha256: af870afceb38e583afa57bcfadfa5cd35ebd74e35aacadcb802bb3a073c13adb
+  sha256: f6ac707ae227b06b2481249ed2678ff6b810b3487cac0fbb66eb0dc2bfd6ecf1
 
 build:
   noarch: python
