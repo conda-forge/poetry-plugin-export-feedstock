@@ -40,7 +40,7 @@ test:
     - test -f "${SP_DIR}"/poetry_plugin_export/__init__.py
     - "pip show poetry-plugin-export | grep -Fx 'Version: {{ version }}'"
     # Ensure pip check has non-empty output and recognizes the missing dep.
-    - "pip check | grep -F 'requires poetry, which is not installed.'"
+    - pip check | grep -F 'requires poetry, which is not installed.'
     # Ensure pip check does not output anything else. (This includes
     # "No broken requirements found." -- a signal to update the recipe ;)
     - "! pip check | grep -Fv 'requires poetry, which is not installed.'"
