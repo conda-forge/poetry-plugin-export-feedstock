@@ -1,5 +1,5 @@
 {% set name = "poetry-plugin-export" %}
-{% set version = "1.0.6" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/poetry-plugin-export-{{ version }}.tar.gz
-  sha256: af870afceb38e583afa57bcfadfa5cd35ebd74e35aacadcb802bb3a073c13adb
+  sha256: 5e92525dd63f38ce74a51ed68ea91d753523f21ce5f9ef8d3b793e2a4b2222ef
 
 build:
   noarch: python
@@ -21,14 +21,29 @@ requirements:
     - poetry-core
   run:
     - python >=3.7,<4.0
-    - poetry >=1.2.0b3,<2.0.0
-    - poetry-core >=1.1.0b3,<2.0.0
+    - poetry-core >=1.1.0,<2.0.0
+  # poetry is actually a run dependency. But since that creates a dependency
+  # cycle, we add it only as a run_constrained for now (until fixed upstream).
+  # (N.B.: This means this package is unusable if `conda install`ed on its own.)
+  # refs:
+  #  - https://github.com/python-poetry/poetry/pull/5980
+  #  - https://github.com/conda-forge/poetry-feedstock/issues/70
+  run_constrained:
+    - poetry >=1.2.0,<2.0.0
 
+# Skip tests partially due to dependency cycle (see above):
+#   File/version check instead of import test; ignored poetry dep in pip check
 test:
-  imports:
-    - poetry_plugin_export
+  # imports:
+  #   - poetry_plugin_export
   commands:
-    - pip check
+    - test -f "${SP_DIR}"/poetry_plugin_export/__init__.py
+    - "pip show poetry-plugin-export | grep -Fx 'Version: {{ version }}'"
+    # Ensure pip check has non-empty output and recognizes the missing dep.
+    - "pip check | grep -F 'requires poetry, which is not installed.'"
+    # Ensure pip check does not output anything else. (This includes
+    # "No broken requirements found." -- a signal to update the recipe ;)
+    - "! pip check | grep -Fv 'requires poetry, which is not installed.'"
   requires:
     - pip
 
