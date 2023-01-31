@@ -29,7 +29,7 @@ requirements:
   #  - https://github.com/python-poetry/poetry/pull/5980
   #  - https://github.com/conda-forge/poetry-feedstock/issues/70
   run_constrained:
-    - poetry >=1.2.2,<2.0.0
+    - poetry >=1.3.0,<2.0.0
 
 # Skip tests partially due to dependency cycle (see above):
 #   File/version check instead of import test; ignored poetry dep in pip check
