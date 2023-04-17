@@ -1,11 +1,11 @@
-About poetry-plugin-export
-==========================
+About poetry-plugin-export-feedstock
+====================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poetry-plugin-export-feedstock/blob/main/LICENSE.txt)
 
 Home: https://pypi.org/project/poetry-plugin-export/
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poetry-plugin-export-feedstock/blob/main/LICENSE.txt)
 
 Summary: Poetry plugin to export the dependencies to various formats
 
