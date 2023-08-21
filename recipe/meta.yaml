@@ -1,5 +1,5 @@
 {% set name = "poetry-plugin-export" %}
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/poetry_plugin_export-{{ version }}.tar.gz
-  sha256: f16974cd9f222d4ef640fa97a8d661b04d4fb339e51da93973f1bc9d578e183f
+  sha256: ecc8738da0c81c3758e36b4e72e04ae59648a547492af2ffe6245af3594bb00f
 
 build:
   noarch: python
@@ -16,11 +16,11 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<4.0
+    - python >=3.8,<4.0
     - pip
     - poetry-core
   run:
-    - python >=3.7,<4.0
+    - python >=3.8,<4.0
     - poetry-core >=1.6.0,<2.0.0
   # poetry is actually a run dependency. But since that creates a dependency
   # cycle, we add it only as a run_constrained for now (until fixed upstream).
