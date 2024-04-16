@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -22,13 +22,9 @@ requirements:
   run:
     - python >=3.8.0,<4.0.0
     - poetry-core >=1.7.0,<2.0.0
-  # poetry is actually a run dependency. But since that creates a dependency
-  # cycle, we add it only as a run_constrained for now (until fixed upstream).
-  # (N.B.: This means this package is unusable if `conda install`ed on its own.)
-  # refs:
-  #  - https://github.com/python-poetry/poetry/pull/5980
-  #  - https://github.com/conda-forge/poetry-feedstock/issues/70
-  run_constrained:
+    # warning: this is a circular dependency.  If this causes trouble (e.g.
+    # there is an update that simultaneously requires a new poetry and
+    # poetry-plugin-export, temporarly switch this to "run_constrained"
     - poetry >=1.8.0,<2.0.0
 
 # Skip tests partially due to dependency cycle (see above):
