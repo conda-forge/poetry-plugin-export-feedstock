@@ -21,8 +21,6 @@ requirements:
     - poetry-core
   run:
     - python >=3.8.0,<4.0.0
-    - cachy >=0.2.0
-    - pendulum >=1.4.4
     - poetry-core >=1.7.0,<3.0.0
     # warning: this is a circular dependency.  If this causes trouble (e.g.
     # there is an update that simultaneously requires a new poetry and
