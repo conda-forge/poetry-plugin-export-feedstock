@@ -1,5 +1,5 @@
 {% set name = "poetry-plugin-export" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/poetry_plugin_export-{{ version }}.tar.gz
-  sha256: 1fa6168a85d59395d835ca564bc19862a7c76061e60c3e7dfaec70d50937fc61
+  sha256: 6fc8755cfac93c74752f85510b171983e2e47d782d4ab5be4ffc4f6945be7967
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -22,16 +22,11 @@ requirements:
   run:
     - python >={{ python_min }},<4.0.0
     - poetry-core >=1.7.0,<3.0.0
-    # warning: this is a circular dependency.  If this causes trouble (e.g.
-    # there is an update that simultaneously requires a new poetry and
-    # poetry-plugin-export, temporarly switch this to "run_constrained"
-    - poetry >=1.8.0,<3.0.0
+    - poetry >=2.0.0,<3.0.0
 
-# Skip tests partially due to dependency cycle (see above):
-#   File/version check instead of import test; ignored poetry dep in pip check
 test:
-  # imports:
-  #   - poetry_plugin_export
+  imports:
+    - poetry_plugin_export
   commands:
     - test -f "${SP_DIR}"/poetry_plugin_export/__init__.py
     - "pip show poetry-plugin-export | grep -Fx 'Version: {{ version }}'"
