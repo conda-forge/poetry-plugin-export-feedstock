@@ -22,9 +22,6 @@ requirements:
   run:
     - python >={{ python_min }},<4.0.0
     - poetry-core >=1.7.0,<3.0.0
-    # warning: this is a circular dependency.  If this causes trouble (e.g.
-    # there is an update that simultaneously requires a new poetry and
-    # poetry-plugin-export, temporarly switch this to "run_constrained"
     - poetry >=2.0.0,<3.0.0
 
 # Skip tests partially due to dependency cycle (see above):
