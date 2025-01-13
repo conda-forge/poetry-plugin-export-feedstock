@@ -24,11 +24,9 @@ requirements:
     - poetry-core >=1.7.0,<3.0.0
     - poetry >=2.0.0,<3.0.0
 
-# Skip tests partially due to dependency cycle (see above):
-#   File/version check instead of import test; ignored poetry dep in pip check
 test:
-  # imports:
-  #   - poetry_plugin_export
+  imports:
+    - poetry_plugin_export
   commands:
     - test -f "${SP_DIR}"/poetry_plugin_export/__init__.py
     - "pip show poetry-plugin-export | grep -Fx 'Version: {{ version }}'"
