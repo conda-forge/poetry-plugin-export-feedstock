@@ -1,5 +1,5 @@
 {% set name = "poetry-plugin-export" %}
-{% set version = "1.9.0" %}
+{% set version = "1.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/poetry_plugin_export-{{ version }}.tar.gz
-  sha256: 6fc8755cfac93c74752f85510b171983e2e47d782d4ab5be4ffc4f6945be7967
+  sha256: 26ef9df924cd874a825d92d6bc01a5a869a4a28d2f2ebba61d3b5b19c60120f0
 
 build:
   noarch: python
@@ -18,11 +18,12 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - poetry-core
+    - poetry-core >=2.0
   run:
-    - python >={{ python_min }},<4.0.0
-    - poetry-core >=1.7.0,<3.0.0
-    - poetry >=2.0.0,<3.0.0
+    - python >={{ python_min }},<4.0
+    - poetry >=2.1.0,<3.0.0
+    - poetry-core >=2.1.0,<3.0.0
+    - tomlkit >=0.11.4,<1.0.0
 
 test:
   imports:
