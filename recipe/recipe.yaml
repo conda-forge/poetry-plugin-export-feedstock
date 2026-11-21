@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: poetry-plugin-export
-  version: "1.10.1"
+  version: "1.10.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/poetry_plugin_export-${{ version }}.tar.gz
-  sha256: b1429306da4eb0fd5c3b52a3bf37a5dfcdac96c6ddcfd08f6385be4aa11932d3
+  sha256: 36c344f5876e55489b4c1001b6151eccc86eb02ec1d2f21b132cfe190dc736b1
 
 build:
   number: 0
